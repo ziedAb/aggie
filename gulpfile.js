@@ -3,9 +3,8 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
-var rename = require('gulp-rename');
-var browserify = require('gulp-browserify');
-var plumber = require('gulp-plumber');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 var livereload = require('gulp-livereload');
 var jsoncombine = require('gulp-jsoncombine');
 var path = require('path');
@@ -42,10 +41,9 @@ gulp.task('lint', function() {
 });
 
 pipes.buildAngular = function() {
-  return gulp.src('public/angular/js/app.js')
-    .pipe(plumber())
-    .pipe(browserify())
-    .pipe(rename('app.min.js'))
+  return browserify('public/angular/js/app.js')
+    .bundle()
+    .pipe(source('app.min.js'))
     .pipe(gulp.dest('public/angular/js'));
 };
 
