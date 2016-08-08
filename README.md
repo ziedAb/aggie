@@ -1,3 +1,5 @@
+[![Dependency Status](https://david-dm.org/TID-Lab/aggie/4751_frontend_packages.svg)](https://david-dm.org/TID-Lab/aggie/4751_frontend_packages)
+
 # Aggie
 
 Aggie is a web application for using social media and other resources to track incidents around real-time events such as elections or natural disasters.
