@@ -1,7 +1,8 @@
 'use strict';
 
 require('./init');
-var request = require('request');
+// var request = require('request');
+var request = require('supertest');
 var expect = require('chai').expect;
 var SMSGhContentService = require('../lib/fetching/content-services/smsgh-content-service');
 
@@ -22,16 +23,15 @@ describe('SMSGhana content service', function() {
 
     it('should start the server and send 200 code', function(done) {
 
-      request({
-        url: 'http://localhost:1111/smsghana',
-        qs: { From: '9845098450', Fulltext: 'lorem ipsum dolor', Date: '2016-09-01' },
-        method: 'GET'
-        }, function(error, response) {
-        if (error) {
-          return done(error);
-        }
-        expect(response.statusCode).to.equal(200);
-        return done();
+      request('http://localhost:1111')
+        .get('/smsghana')
+        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .expect(200)
+        .end(function (err,res) {
+          if (err) {
+            return done(err);
+          }
+          return done();
         });
     });
     
@@ -45,15 +45,15 @@ describe('SMSGhana content service', function() {
         done();
       });
 
-      request({
-        url: 'http://localhost:1111/smsghana',
-        qs: { From: '9845098450', Fulltext: 'lorem ipsum dolor', Date: '2016-09-01' },
-        method: 'GET'
-        }, function(error, response) {
-          expect(response.statusCode).to.equal(200);
-          if (error) {
-            return done(error);
+      request('http://localhost:1111')
+        .get('/smsghana')
+        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .expect(200)
+        .end(function (err,res) {
+          if (err) {
+            return done(err);
           }
+          done();
         });
         
     });
@@ -72,16 +72,15 @@ describe('SMSGhana content service', function() {
 
       service.stop();
 
-      request({
-        url: 'http://localhost:1111/smsghana',
-        qs: { From: '9845098450', Fulltext: 'lorem ipsum dolor', Date: '2016-09-01' },
-        method: 'GET'
-        }, function(error) {
-        if (error) {
-          expectToNotEmitReport(service, done);
-          return done();
-        }
-        done(error);
+      request('http://localhost:1111')
+        .get('/smsghana')
+        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .end(function (err,res) {
+          if (err) {
+            expectToNotEmitReport(service, done);
+            return done();
+          }
+          done(err);
         });
     });
   });
