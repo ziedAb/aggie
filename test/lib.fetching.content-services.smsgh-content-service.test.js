@@ -1,10 +1,16 @@
 'use strict';
 
 require('./init');
-// var request = require('request');
 var request = require('supertest');
 var expect = require('chai').expect;
 var SMSGhContentService = require('../lib/fetching/content-services/smsgh-content-service');
+
+// This can be modified as more fields are added
+var req_params = {
+  'from': '9845098450',
+  'fulltext': 'lorem ipsum dolor',
+  'date': '2016-09-01'
+};
 
 describe('SMSGhana content service', function() {
   describe('Testing start and receive message', function() {
@@ -25,7 +31,7 @@ describe('SMSGhana content service', function() {
 
       request('http://localhost:1111')
         .get('/smsghana')
-        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .query(req_params)
         .expect(200)
         .end(function (err,res) {
           if (err) {
@@ -47,7 +53,7 @@ describe('SMSGhana content service', function() {
 
       request('http://localhost:1111')
         .get('/smsghana')
-        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .query(req_params)
         .expect(200)
         .end(function (err,res) {
           if (err) {
@@ -74,7 +80,7 @@ describe('SMSGhana content service', function() {
 
       request('http://localhost:1111')
         .get('/smsghana')
-        .query('from=9845098450&fulltext=lorem%20ipsum%20dolor&date=2016-09-01')
+        .query(req_params)
         .end(function (err,res) {
           if (err) {
             expectToNotEmitReport(service, done);
