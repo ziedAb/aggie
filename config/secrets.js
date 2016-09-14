@@ -1,6 +1,7 @@
 // sets up configuration to be used by the server
 // uses nconf so that configuration can be overwritten by environment variables
 
+console.log("Accessed config/secrets");
 var nconf = require('nconf');
 var path = require('path');
 var S = require('string');

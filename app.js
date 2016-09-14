@@ -28,4 +28,6 @@ _fork('/lib/api');
 _fork('/lib/fetching');
 _fork('/lib/analytics');
 
+console.log("in app.js");
+
 module.exports = processManager;
