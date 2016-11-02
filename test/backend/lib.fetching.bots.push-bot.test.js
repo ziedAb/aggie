@@ -7,7 +7,7 @@ var Source = require('../../models/source');
 
 describe('Push bot', function() {
   before(function(done) {
-    var source = new Source({ nickname: 't', media: 'dummy', keywords: 't' });
+    var source = new Source({ nickname: 't', media: 'dummy', keywords: 't', tags: 'tag1' });
     var contentService = contentServiceFactory.create(source);
     pushBot = new PushBot({ source: source, contentService: contentService });
     done();
@@ -24,6 +24,7 @@ describe('Push bot', function() {
       expect(report_data).to.have.property('content');
       expect(report_data.content).to.contain('t');
       expect(report_data).to.have.property('tags');
+      expect(report_data.tags).to.equal('tag1');
       // Stop stream to ensure a single fetch
       pushBot.stop();
       done();

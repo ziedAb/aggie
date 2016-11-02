@@ -7,7 +7,7 @@ var Source = require('../../models/source');
 
 describe('Pull bot', function() {
   before(function(done) {
-    var source = new Source({ nickname: 'dummy-pull', media: 'dummy-pull' });
+    var source = new Source({ nickname: 'dummy-pull', media: 'dummy-pull', tags: 'tag1' });
     source.save();
     var contentService = contentServiceFactory.create(source);
     pullBot = new PullBot({ source: source, contentService: contentService, interval: 100 });
@@ -24,6 +24,7 @@ describe('Pull bot', function() {
     pullBot.on('report', function(report_data) {
       expect(report_data).to.have.property('content');
       expect(report_data).to.have.property('tags');
+      expect(report_data.tags).to.equal('tag1');
       if (--tries === 0) {
         pullBot.stop();
         done();

@@ -62,14 +62,17 @@ describe('Facebook content service', function() {
         expect(reportData.content).to.contain('The ACC Champion');
         expect(reportData.author).to.equal('Georgia Tech');
         expect(reportData.url).to.contain('https');
+        expect(reportData.tags).to.equal('facebookTag1, facebookTag2');
         break;
       case 2:
         expect(reportData.content).to.contain('Bioengineers at');
         expect(reportData.author).to.equal('Georgia Tech');
+        expect(reportData.tags).to.equal('facebookTag1, facebookTag2');
         break;
       case 3:
         expect(reportData.content).to.contain('Amazing');
         expect(reportData.author).to.equal('Test User 1');
+        expect(reportData.tags).to.equal('facebookTag1, facebookTag2');
         break;
       case 4:
         return done(new Error('Unexpected report'));
@@ -97,16 +100,19 @@ describe('Facebook content service', function() {
         expect(reportData.content).to.contain('Totez cool');
         expect(reportData.author).to.equal('Test User 2');
         expect(reportData.url).to.contain('https');
+        expect(reportData.tags).to.equal('facebookTag3, facebookTag4');
         break;
       case 2:
         expect(reportData.content).to.contain('Best');
         expect(reportData.author).to.equal('Test User 3');
         expect(reportData.url).to.contain('https');
+        expect(reportData.tags).to.equal('facebookTag3, facebookTag4');
         break;
       case 3:
         expect(reportData.content).to.contain('ranked');
         expect(reportData.author).to.equal('Test User 4');
         expect(reportData.url).to.contain('https');
+        expect(reportData.tags).to.equal('facebookTag3, facebookTag4');
         break;
       case 4:
         return done(new Error('Unexpected report'));

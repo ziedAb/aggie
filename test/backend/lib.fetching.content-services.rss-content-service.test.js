@@ -47,12 +47,14 @@ describe('RSS content service', function() {
         expect(reportData.content).to.contain('Stormwater');
         expect(reportData.author).to.equal('Jupiter');
         expect(reportData.url).to.contain('river');
+        expect(reportData.tags).to.equal('rssTag1');
         break;
       case 2:
         expect(reportData.content).to.contain('Elected');
         expect(reportData.content).to.contain('CoC professor');
         expect(reportData.author).to.equal('Jupiter');
         expect(reportData.url).to.contain('lipton');
+        expect(reportData.tags).to.equal('rssTag1');
         break;
       case 3:
         return done(new Error('Unexpected report'));

@@ -80,7 +80,7 @@ describe('SMSGhana content service', function() {
             expect(reportData.authoredAt).to.eql(new Date('2016-09-01'));
             expect(reportData.content).to.equal('lorem ipsum dolor');
             expect(reportData.author).to.equal('9845098450');
-            expect(reportData.tags).to.equal('ping');
+            expect(reportData.tags).to.equal('smsghTag1, smsghTag2, smsghTag3');
             callback();
           });
         },
@@ -89,7 +89,7 @@ describe('SMSGhana content service', function() {
             expect(reportData.authoredAt).to.eql(new Date('2016-09-01'));
             expect(reportData.content).to.equal('lorem ipsum dolor');
             expect(reportData.author).to.equal('1234567890');
-            expect(reportData.tags).to.equal('ping');
+            expect(reportData.tags).to.equal('smsghTag1, smsghTag2, smsghTag3');
             callback();
           });
         },
@@ -98,7 +98,7 @@ describe('SMSGhana content service', function() {
             expect(reportData.authoredAt).to.eql(new Date('2016-09-01'));
             expect(reportData.content).to.equal('lorem ipsum dolor');
             expect(reportData.author).to.equal('9876543210');
-            expect(reportData.tags).to.equal('ping');
+            expect(reportData.tags).to.equal('smsghTag1, smsghTag2, smsghTag3');
             callback();
           });
         }
