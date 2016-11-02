@@ -22,6 +22,7 @@ describe('Twitter content service', function() {
       expect(reportData.content).to.equal('foo bar baz');
       expect(reportData.author).to.equal('bozo');
       expect(reportData.url).to.equal('https://twitter.com/bozo/status/123');
+      expect(reportData.tags).to.equal('tag1');
 
       service.stop();
       done();

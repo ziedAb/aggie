@@ -21,6 +21,7 @@ describe('Content service', function() {
     contentService.start();
     contentService.once('report', function(reportData) {
       expect(reportData).to.have.property('content');
+      expect(reportData).to.have.property('tags');
       contentService.stop();
       done();
     });

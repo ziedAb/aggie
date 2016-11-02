@@ -50,6 +50,7 @@ describe('ELMO content service', function() {
       expect(reportData).to.have.property('authoredAt');
       expect(reportData).to.have.property('content');
       expect(reportData).to.have.property('author');
+      expect(reportData).to.have.property('tags');
       switch (++fetched) {
       case 1:
         expect(reportData.content).to.contain('[FOO: Certainly] [BAR: Nope] [BAZ: Perhaps]');

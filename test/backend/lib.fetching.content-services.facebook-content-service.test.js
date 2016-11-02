@@ -56,6 +56,7 @@ describe('Facebook content service', function() {
       expect(reportData).to.have.property('content');
       expect(reportData).to.have.property('author');
       expect(reportData).to.have.property('url');
+      expect(reportData).to.have.property('tags');
       switch (++fetched) {
       case 1:
         expect(reportData.content).to.contain('The ACC Champion');

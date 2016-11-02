@@ -28,6 +28,7 @@ describe('Bot', function() {
     bot.on('report', function() {
       var data = bot.fetchNext();
       expect(data).to.have.property('content');
+      expect(data).to.have.property('tags');
       reports.push(data);
       if (--remaining === 0) {
         expect(reports).to.have.length(4);

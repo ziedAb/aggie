@@ -23,6 +23,7 @@ describe('Push bot', function() {
     pushBot.on('report', function(report_data) {
       expect(report_data).to.have.property('content');
       expect(report_data.content).to.contain('t');
+      expect(report_data).to.have.property('tags');
       // Stop stream to ensure a single fetch
       pushBot.stop();
       done();

@@ -23,6 +23,7 @@ describe('Pull bot', function() {
     var tries = 3;
     pullBot.on('report', function(report_data) {
       expect(report_data).to.have.property('content');
+      expect(report_data).to.have.property('tags');
       if (--tries === 0) {
         pullBot.stop();
         done();
