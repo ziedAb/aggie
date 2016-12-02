@@ -75,10 +75,33 @@ angular.module('Aggie')
       return report;
     };
 
+    var belongsToView = function(report) {
+      for (var key in $scope.searchParams) {
+
+        //TODO For all the filters!!
+        if (key === 'media') {
+          if (report.media !== $scope.searchParams.media) {
+            return false;
+          }
+        }
+        return true;
+      }
+    };
+
+    var applyFilters = function(reports) {
+      return reports.reduce(function(memo, report) {
+        if (belongsToView(report)) {
+          $scope.reportsById[report._id] = report;
+          memo.push(report);
+        }
+        return memo;
+      }, []);
+    };
+
     var removeDuplicates = function(reports) {
       return reports.reduce(function(memo, report) {
         if (!(report._id in $scope.reportsById)) {
-          $scope.reportsById[report._id] = report;
+          // $scope.reportsById[report._id] = report;
           memo.push(report);
         }
         return memo;
@@ -169,9 +192,10 @@ angular.module('Aggie')
 
     $scope.handleNewReports = function(reports) {
       var uniqueReports = removeDuplicates(reports);
-      $scope.pagination.total += uniqueReports.length;
-      $scope.pagination.visibleTotal += uniqueReports.length;
-      $scope.newReports.addMany(uniqueReports);
+      var filteredReports = applyFilters(uniqueReports);
+      $scope.pagination.total += filteredReports.length;
+      $scope.pagination.visibleTotal += filteredReports.length;
+      $scope.newReports.addMany(filteredReports);
     };
 
     $scope.unlinkIncident = function(report) {
