@@ -91,7 +91,7 @@ Report.queryReports = function(query, page, callback) {
   query.since = new Date();
 
   Report.findSortedPage(filter, page, callback);
-};
+;}ma
 
 Report.findSortedPage = function(filter, page, callback) {
   Report.findPage(filter, page, { sort: '-storedAt' }, function(err, reports) {

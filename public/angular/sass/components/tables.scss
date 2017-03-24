@@ -334,3 +334,23 @@ td {
     display: block;
   }
 }
+@media print {
+  .navbar {
+    display: none;
+  }
+  tr.whatsapp-source {
+    background-color: lime
+  }
+  tr.facebook-source {
+    background-color:light-blue;
+  }
+  td.verified {
+    background-color:green;
+  }
+  td.refuted {
+    background-color:red;
+  }
+  td.escalated {
+    background-color:orange;
+  }
+}

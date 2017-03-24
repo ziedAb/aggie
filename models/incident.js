@@ -108,11 +108,11 @@ Incident.queryIncidents = function(query, page, options, callback) {
     callback = options;
     options = {};
   }
-
-  if (page < 0) page = 0;
+  //TODO: This is not right! but it good for incidents_all for now
+  //if (page < 0) page = 0;
 
   var filter = {};
-  options.limit = 100;
+  options.limit = 300;
 
   // Create filter object
   Incident.filterAttributes.forEach(function(attr) {
@@ -154,6 +154,7 @@ Incident.queryIncidents = function(query, page, options, callback) {
 
   // Just use filters when no keywords are provided
   Incident.findPage(filter, page, options, callback);
+  //Incident.find(filter, options, callback);
 };
 
 // Mixin shared incident methods

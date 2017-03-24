@@ -24,7 +24,7 @@ angular.module('Aggie')
     $scope.veracityOptions = veracityOptions;
     $scope.sources = sources;
     $scope.sourcesById = {};
-    $scope.mediaOptions = mediaOptions;
+
     $scope.visibleReports = new Queue(paginationOptions.perPage);
     $scope.pageType = 'show-incident';
 

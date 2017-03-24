@@ -118,7 +118,35 @@ angular.module('Aggie')
       }
     });
 
-
+    $stateProvider.state('all_incidents', {
+      url: '/incidents_all',
+      templateUrl: '/templates/incidents/index_all.html',
+      controller: 'AllIncidentsIndexController',
+      resolve: {
+        incidents: ['Incident', '$stateParams', function(Incident, params) {
+          return Incident.query({
+            title: params.title,
+            locationName: params.locationName,
+            assignedTo: params.assignedTo,
+            status: params.status,
+            veracity: params.veracity,
+            tags: params.tags,
+            escalated: params.escalated
+          }).$promise;
+        }],
+        reports: ['Report', function(Report) {
+          return Report.query({
+            incidentId: 'all' //{ $exists: true, $ne: null}
+          }).$promise;
+        }],
+        users: ['User', function(User) {
+          return User.query().$promise;
+        }],
+        sources: ['Source', function(Source) {
+          return Source.query().$promise;
+        }]
+      }
+    });
     $stateProvider.state('incidents', {
       url: '/incidents?page&title&locationName&assignedTo&status&veracity&tags&escalated',
       templateUrl: '/templates/incidents/index.html',

@@ -116,6 +116,7 @@ require('./controllers/users/form_modal');
 require('./controllers/users/index');
 require('./controllers/users/profile');
 require('./controllers/incidents/index');
+require('./controllers/incidents/index_all');
 require('./controllers/incidents/show');
 require('./controllers/incidents/map');
 require('./controllers/incidents/form_modal');
